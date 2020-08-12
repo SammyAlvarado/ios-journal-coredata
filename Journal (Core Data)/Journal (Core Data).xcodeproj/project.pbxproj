@@ -20,6 +20,7 @@
 		E1C5290624DB9ABB00367B4E /* Entry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5290524DB9ABB00367B4E /* Entry+Convenience.swift */; };
 		E1C5290924DB9AD200367B4E /* Journal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1C5290724DB9AD200367B4E /* Journal.xcdatamodeld */; };
 		E1DFAE1524E37DB0000712EE /* EntryRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFAE1424E37DB0000712EE /* EntryRepresentation.swift */; };
+		E1DFAE1824E39074000712EE /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFAE1724E39074000712EE /* EntryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		E1C5290524DB9ABB00367B4E /* Entry+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+Convenience.swift"; sourceTree = "<group>"; };
 		E1C5290824DB9AD200367B4E /* Journal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Journal.xcdatamodel; sourceTree = "<group>"; };
 		E1DFAE1424E37DB0000712EE /* EntryRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepresentation.swift; sourceTree = "<group>"; };
+		E1DFAE1724E39074000712EE /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		E1C528EA24DB995E00367B4E /* Journal (Core Data) */ = {
 			isa = PBXGroup;
 			children = (
+				E1DFAE1624E3903E000712EE /* Model Controllers */,
 				E1C5290A24DB9BA000367B4E /* Model */,
 				E1C5290C24DB9BFD00367B4E /* Views */,
 				E1C5290B24DB9BDA00367B4E /* View Controlles */,
@@ -119,6 +122,14 @@
 				E1C528F424DB995E00367B4E /* Assets.xcassets */,
 			);
 			path = Applications;
+			sourceTree = "<group>";
+		};
+		E1DFAE1624E3903E000712EE /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFAE1724E39074000712EE /* EntryController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C5290024DB9A5800367B4E /* EntriesTableViewController.swift in Sources */,
+				E1DFAE1824E39074000712EE /* EntryController.swift in Sources */,
 				E1DFAE1524E37DB0000712EE /* EntryRepresentation.swift in Sources */,
 				E1C5290224DB9A7A00367B4E /* EntryTableViewCell.swift in Sources */,
 				E1C528F024DB995E00367B4E /* CreateEntryViewController.swift in Sources */,
