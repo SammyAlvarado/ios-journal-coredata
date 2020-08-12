@@ -45,7 +45,20 @@ class EntryController {
             }
             request.httpBody = try JSONEncoder().encode(representation)
         } catch {
-            print("Error ")
+            print("Error encoding task: \(entry), \(error)")
+            completion(.failure(.noEncode))
+            return
         }
+
+        let entry = URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                print("Error PUTting task to server: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+
+            completion(.success(true))
+        }
+        entry.resume()
     }
 }
