@@ -10,6 +10,8 @@ import UIKit
 
 class CreateEntryViewController: UIViewController {
 
+    var entryController: EntryController?
+
     // MARK: - IBOutlet
     @IBOutlet weak var entryTitleLabel: UITextField!
     @IBOutlet weak var entryTextField: UITextView!
@@ -31,7 +33,9 @@ class CreateEntryViewController: UIViewController {
         let moodIndex = segmentedControl.selectedSegmentIndex
         let mood = Mood.allCases[moodIndex]
         
-        Entry(bodyText: entry, title: title, timestamp: timestamp, mood: mood)
+        let entries = Entry(bodyText: entry, title: title, timestamp: timestamp, mood: mood)
+
+        entryController?.sendEntryToServer(entry: entries)
 
 
         do {

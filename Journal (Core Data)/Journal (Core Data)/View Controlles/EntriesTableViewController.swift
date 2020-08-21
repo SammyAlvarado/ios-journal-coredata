@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class EntriesTableViewController: UITableViewController {
+    let entryController = EntryController()
 
     // This part will be converted in to FetchResultController
     //    var entries: [Entry] {
@@ -66,37 +67,38 @@ class EntriesTableViewController: UITableViewController {
         return cell
     }
 
-
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let entry = fetchedResultsController.object(at: indexPath)
-            let moc = CoreDataStack.shared.mainContext
-            moc.delete(entry)
+            entryController.deleteEntryFromServer(entry) { (result) in
+                guard let _ = try? result.get() else { return }
 
-            do {
-                try moc.save()
-//                tableView.reloadData()
-            } catch {
-                moc.reset()
-                NSLog("Error saving managed object context: \(error)")
+                let moc = CoreDataStack.shared.mainContext
+                moc.delete(entry)
+
+                do {
+                    try moc.save()
+                    //                tableView.reloadData()
+                } catch {
+                    moc.reset()
+                    NSLog("Error saving managed object context: \(error)")
+                }
             }
         }
     }
 
+    // MARK: - Navigation
 
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             if let detailVC = segue.destination as?
-            EntryDetailViewController,
+                EntryDetailViewController,
                 let index = self.tableView.indexPathForSelectedRow {
                 detailVC.entry = fetchedResultsController.object(at: index)
             }
         }
-     }
-
+    }
 }
 
 extension EntriesTableViewController: NSFetchedResultsControllerDelegate {

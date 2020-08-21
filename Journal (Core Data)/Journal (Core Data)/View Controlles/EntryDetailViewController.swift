@@ -12,6 +12,7 @@ class EntryDetailViewController: UIViewController {
 
     var entry: Entry?
     var wasEdited = false
+    var entryController: EntryController?
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var moodSegmentedControl: UISegmentedControl!
@@ -37,6 +38,7 @@ class EntryDetailViewController: UIViewController {
             entry.bodyText = journalEntry
             let moodIndex = moodSegmentedControl.selectedSegmentIndex
             entry.mood = Mood.allCases[moodIndex].rawValue
+            entryController?.sendEntryToServer(entry: entry)
 
             do {
                 try CoreDataStack.shared.mainContext.save()
